@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CarnivoreID – Layout Test</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+<style>
+/* ===================== */
+/* GLOBAL                */
+/* ===================== */
+body {
+    overflow-x: hidden;
+}
+
+.navbar {
+    z-index: 1030;
+}
+
+
+/* ===================== */
+/* LAYOUT WRAPPER        */
+/* ===================== */
+.app-layout {
+    margin-top: 56px; /* navbar height */
+    height: calc(100vh - 56px);
+}
+
+/* ===================== */
+/* SIDEBAR BASE          */
+/* ===================== */
+#sidebar {
+    background-color: #f8f9fa;
+    transition: width 0.25s ease;
+}
+
+.content-wrapper {
+    transition: margin-left 0.25s ease;
+}
+
+.nav-link span {
+    transition: 
+        opacity 0.15s ease,
+        transform 0.15s ease;
+    white-space: nowrap;
+}
+
+/* ===================== */
+/* DESKTOP BEHAVIOR      */
+/* ===================== */
+@media (min-width: 992px) {
+
+    /* sidebar becomes part of layout */
+    #sidebar {
+        position: static !important;
+        transform: none !important;
+        visibility: visible !important;
+
+        width: 260px;
+        flex-shrink: 0;
+
+        border-right: 1px solid #dee2e6;
+        height: 100%;
+    }
+
+    /* content never overlapped */
+    .content-wrapper {
+        height: 100%;
+        overflow-y: auto;
+    }
+
+    /* collapsed sidebar */
+    body.sidebar-collapsed #sidebar {
+        width: 80px;
+    }
+
+    body.sidebar-collapsed .nav-link span {
+        display: none;
+        opacity: 0;
+        transform: translateX(-10px);
+        pointer-events: none;
+    }
+}
+
+/* ===================== */
+/* MOBILE BEHAVIOR       */
+/* ===================== */
+@media (max-width: 991.98px) {
+    #sidebar {
+        top: 56px;
+        height: calc(100vh - 56px);
+    }
+
+    .content-wrapper {
+        padding-top: 0;
+    }
+}
+
+/* ===================== */
+/* SIDEBAR FOOTER        */
+/* ===================== */
+.sidebar-footer img {
+    opacity: 0.85;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ===================== -->
+<!-- NAVBAR               -->
+<!-- ===================== -->
+<nav class="navbar navbar-dark bg-dark fixed-top px-3 border-bottom">
+
+    <!-- mobile toggle -->
+    <button class="btn btn-outline-light me-2 d-lg-none"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#sidebar">
+        <i class="bi bi-list"></i>
+    </button>
+
+    <!-- desktop toggle -->
+    <button class="btn btn-outline-light me-2 d-none d-lg-inline"
+            id="sidebarToggle">
+        <i class="bi bi-list"></i>
+    </button>
+
+    <a class="navbar-brand fw-semibold" href="#">CarnivoreID</a>
+
+    <div class="ms-auto d-flex align-items-center gap-3">
+        <a class="nav-link text-light" href="#"><i class="bi bi-github"></i></a>
+        <a class="nav-link text-light" href="#"><i class="bi bi-book"></i></a>
+
+        <div class="dropdown">
+            <a class="nav-link dropdown-toggle text-light"
+               href="#"
+               data-bs-toggle="dropdown">
+                <i class="bi bi-person-circle"></i> User
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><a class="dropdown-item" href="#">Settings</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- ===================== -->
+<!-- APP LAYOUT           -->
+<!-- ===================== -->
+<div class="app-layout d-flex">
+
+    <!-- SIDEBAR -->
+    <div class="offcanvas offcanvas-start d-flex flex-column p-3"
+         id="sidebar"
+         tabindex="-1">
+
+        <div class="offcanvas-header d-lg-none">
+            <h5 class="offcanvas-title">CarnivoreID</h5>
+            <button class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+
+        <ul class="nav nav-pills flex-column gap-1">
+            <li class="nav-item">
+                <a class="nav-link active" href="#">
+                    <i class="bi bi-tags me-2"></i>
+                    <span>Taxon classification</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="bi bi-fingerprint me-2"></i>
+                    <span>Individual identification</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="bi bi-collection me-2"></i>
+                    <span>Datasets</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="bi bi-graph-up me-2"></i>
+                    <span>Analysis</span>
+                </a>
+            </li>
+        </ul>
+
+        <!-- logos -->
+        <div class="sidebar-footer mt-auto pt-3">
+            <div class="d-flex justify-content-around">
+                <img src="https://dummyimage.com/80x40/000/fff&text=Logo1">
+                <img src="https://dummyimage.com/80x40/000/fff&text=Logo2">
+                <img src="https://dummyimage.com/80x40/000/fff&text=Logo3">
+                <img src="https://dummyimage.com/80x40/000/fff&text=Logo4">
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTENT -->
+    <main class="content-wrapper flex-fill p-4">
+        <h1>CarnivoreID Layout – Final Test</h1>
+        <p>
+            ✔ Sidebar nikdy nepřekrývá navbar<br>
+            ✔ Na desktopu je součást layoutu<br>
+            ✔ Na mobilu offcanvas
+        </p>
+
+        <div class="alert alert-success">
+            Toto je referenční, produkčně správný layout.
+        </div>
+
+        <p>Scrolluj, zmenšuj okno, klikej na ☰.</p>
+
+        <div style="height: 1200px;"></div>
+    </main>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+document.getElementById("sidebarToggle")?.addEventListener("click", () => {
+    document.body.classList.toggle("sidebar-collapsed");
+});
+</script>
+
+</body>
+</html>
