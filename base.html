@@ -34,7 +34,7 @@ body {
 /* SIDEBAR BASE          */
 /* ===================== */
 #sidebar {
-    background-color: #f8f9fa;
+    
     transition: width 0.25s ease;
 }
 
@@ -106,6 +106,14 @@ body {
 .sidebar-footer img {
     opacity: 0.85;
 }
+
+:root {
+  --bs-primary: #2ce563;
+  --bs-secondary: #350ac2;
+  --bs-success: #972d8e;
+  --bs-danger: #e63757;
+  --bs-dark: #43c278;
+}
 </style>
 </head>
 
@@ -132,6 +140,10 @@ body {
     <a class="navbar-brand fw-semibold" href="#">CarnivoreID</a>
 
     <div class="ms-auto d-flex align-items-center gap-3">
+        <button class="btn btn-outline-light"
+        onclick="toggleTheme()">
+  <i class="bi bi-moon-stars"></i>
+</button>
         <a class="nav-link text-light" href="#"><i class="bi bi-github"></i></a>
         <a class="nav-link text-light" href="#"><i class="bi bi-book"></i></a>
 
@@ -230,6 +242,13 @@ body {
 document.getElementById("sidebarToggle")?.addEventListener("click", () => {
     document.body.classList.toggle("sidebar-collapsed");
 });
+
+function toggleTheme() {
+  const html = document.documentElement;
+  html.dataset.bsTheme =
+    html.dataset.bsTheme === "dark" ? "light" : "dark";
+}
+
 </script>
 
 </body>
