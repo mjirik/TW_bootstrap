@@ -1,0 +1,18 @@
+/* jemně růžový vzhled */
+body {
+    background-color: #fff0f6;
+  }
+  
+  .text-primary {
+    color: #e83e8c !important;
+  }
+  
+  .btn-primary {
+    background-color: #e83e8c;
+    border-color: #e83e8c;
+  }
+  
+  .btn-primary:hover {
+    background-color: #c2185b;
+    border-color: #c2185b;
+  }
