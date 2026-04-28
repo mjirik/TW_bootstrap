@@ -1,18 +1,18 @@
-/* jemně růžový vzhled */
+/* jemně zelený vzhled */
 body {
-    background-color: #fff0f6;
+    background-color: #f4fff0;
   }
   
   .text-primary {
-    color: #e83e8c !important;
+    color: #3ee87f !important;
   }
   
   .btn-primary {
-    background-color: #e83e8c;
-    border-color: #e83e8c;
+    background-color: #5ae83e;
+    border-color: #3ee868;
   }
   
   .btn-primary:hover {
-    background-color: #c2185b;
-    border-color: #c2185b;
+    background-color: #18c218;
+    border-color: #40c218;
   }
